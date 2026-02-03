@@ -61,7 +61,7 @@ gen((ctx) => {
 **Automatic invariant checking** — check properties after every action:
 ```typescript
 // Helper that wraps an async iterable to check invariants after each yield
-function* withInvariants(source, check) { for await (const item of source) { yield item; check() } }
+async function* withInvariants(source, check) { for await (const item of source) { yield item; check() } }
 // Or: just put expect() calls at the bottom of the for-await loop body
 ```
 

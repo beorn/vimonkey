@@ -52,9 +52,9 @@ import { createFuzzTerm, createReplayTerm } from 'vitestx'
 // Random key provider
 const term = createFuzzTerm({ keys: ['j', 'k', 'Enter'], count: 100, seed: 42 })
 
-// Smart/async pick provider
+// Smart/async pick provider — pick(state, history, random)
 const term = createFuzzTerm({
-  pick: async (state) => chooseKey(state),
+  pick: async (state, history, random) => chooseKey(state, history, random),
   count: 100,
 })
 
