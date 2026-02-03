@@ -8,7 +8,8 @@
     ".": "./src/index.ts",
     "./ergonomic": "./src/ergonomic/index.ts",
     "./plugin": "./src/plugin.ts",
-    "./terms": "./src/fuzz/terms/index.ts"
+    "./fuzz": "./src/fuzz/terms/index.ts",
+    "./chaos": "./src/chaos/index.ts"
   },
   "files": [
     "dist",

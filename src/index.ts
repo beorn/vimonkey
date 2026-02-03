@@ -10,9 +10,6 @@ export { fuzzContext, getFuzzContext, isInFuzzContext, createFuzzContext, create
 export { shrinkSequence, formatShrinkResult, type ShrinkOptions, type ShrinkResult } from './ergonomic/shrink.js'
 export { saveCase, loadCases, loadCasesForTest, deleteCase, clearCases, getFuzzCasesDir, type SavedCase } from './ergonomic/regression.js'
 
-// Fuzz terms (Provider-based)
-export { createFuzzTerm, createReplayTerm, type FuzzTermProvider, type FuzzTermOptions, type FuzzPick, type FuzzState, type ReplayTermProvider, type ReplayTermOptions } from './fuzz/terms/index.js'
-
 // Utilities
 export { createSeededRandom, parseSeed, type SeededRandom } from './random.js'
 export { getTestSys, type TestSys } from './env.js'
