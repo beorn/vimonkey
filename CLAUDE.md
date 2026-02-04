@@ -1,6 +1,6 @@
 # vitestx - Vitest Extension
 
-Vitest plugin with fuzz testing: gen/take generators, test.fuzz() with auto-shrinking, chaos stream transformers.
+Vitest extensions: fuzz testing (gen/take generators, test.fuzz() with auto-shrinking, chaos stream transformers) and dotz streaming reporter (inkx React terminal UI).
 
 ## Commands
 
@@ -19,8 +19,11 @@ src/
 │ ├── context.ts # FuzzContext for tracking state
 │ ├── shrink.ts # Delta-debugging shrink
 │ └── regression.ts # **fuzz_cases**/ save/load
-└── chaos/ # Chaos stream transformers
-└── index.ts # drop, reorder, duplicate, burst, initGap, delay + chaos()
+├── chaos/ # Chaos stream transformers
+│ └── index.ts # drop, reorder, duplicate, burst, initGap, delay + chaos()
+└── dotz/ # Streaming dot reporter
+├── index.tsx # DotzReporter class + React components
+└── store.ts # TestStore (useSyncExternalStore)
 
 ## Subpath Exports
 
@@ -29,6 +32,7 @@ import { test, gen, take } from "vitestx" // Root: re-exports fuzz + utilities
 import { test, gen, take } from "vitestx/fuzz" // Fuzz: gen/take/test.fuzz/shrink/regression
 import { chaos, drop, reorder } from "vitestx/chaos" // Chaos: stream transformers
 import { vitestxPlugin } from "vitestx/plugin" // Vitest plugin
+// Dotz reporter: use as --reporter=vitestx/dotz
 ```
 
 ## Key APIs
