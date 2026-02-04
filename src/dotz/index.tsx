@@ -456,7 +456,10 @@ function DotsSectionInner({
                 return (
                   <Box key={file} flexDirection="row">
                     <Box width={maxLabelWidth}>
-                      <Text dim>{"  "}{name}</Text>
+                      <Text dim>
+                        {"  "}
+                        {name}
+                      </Text>
                     </Box>
                     <Box flexDirection="row" flexWrap="wrap" width={dotsWidth}>
                       <DotStrip
