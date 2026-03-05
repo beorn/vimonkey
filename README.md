@@ -1,6 +1,6 @@
 # vitestx
 
-Vitest extensions: fuzz testing + dot reporter. Async generators, auto-shrinking, chaos streams, and a streaming dot reporter with inkx.
+Vitest extensions: fuzz testing + dot reporter. Async generators, auto-shrinking, chaos streams, and a streaming dot reporter with hightea.
 
 ```typescript
 import { test, gen, take } from "vitestx"
@@ -123,7 +123,7 @@ rng.fork() // independent child stream
 
 ## Dotz Reporter
 
-A streaming vitest reporter that renders test results as colored dots using inkx (React terminal UI).
+A streaming vitest reporter that renders test results as colored dots using hightea (React terminal UI).
 
 ```bash
 # Use as vitest reporter
@@ -132,12 +132,12 @@ vitest run --reporter=vitestx/dotz
 
 Features:
 
-- Incremental rendering via `useSyncExternalStore` + inkx `flush()`
+- Incremental rendering via `useSyncExternalStore` + hightea `flush()`
 - Duration-based dot symbols: `·` fast, `•` medium, `●` slow
 - Status dots: `x` fail, `-` skip, `*` pending, `!` noisy
 - Per-package categorization with file breakout for large packages
 - Slow test summary with configurable threshold
-- Console capture via inkx `<Console />`
+- Console capture via hightea `<Console />`
 - Static fallback for non-TTY environments (CI)
 
 ```typescript

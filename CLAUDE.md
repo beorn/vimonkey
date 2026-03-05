@@ -1,6 +1,6 @@
 # vitestx - Vitest Extension
 
-Vitest extensions: fuzz testing (gen/take generators, test.fuzz() with auto-shrinking, chaos stream transformers) and dotz streaming reporter (inkx React terminal UI).
+Vitest extensions: fuzz testing (gen/take generators, test.fuzz() with auto-shrinking, chaos stream transformers) and dotz streaming reporter (hightea React terminal UI).
 
 ## Commands
 

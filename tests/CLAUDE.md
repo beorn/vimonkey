@@ -14,7 +14,7 @@
 ## What NOT to Test Here
 
 - Vitest internals or reporter protocol — vitestx bridges to them
-- inkx rendering details — dotz tests use `createRenderer` as a black box
+- hightea rendering details — dotz tests use `createRenderer` as a black box
 
 ## Patterns
 
@@ -32,7 +32,7 @@ test("gen is deterministic with same seed", async () => {
 })
 ```
 
-Dotz tests use `createTestStore` + `createRenderer` from inkx/testing:
+Dotz tests use `createTestStore` + `createRenderer` from hightea/testing:
 
 ```typescript
 import { createTestStore } from "../src/dotz/store.js"
@@ -57,7 +57,7 @@ bun vitest run vendor/vitestx/tests/dotz.test.tsx  # Dotz reporter
 
 ## Efficiency
 
-Pure logic tests are fast (~50ms). Dotz rendering tests (~200ms) due to inkx renderer. The `dotz-streaming` test uses real `inkx` render with suppressed stdout (~300ms).
+Pure logic tests are fast (~50ms). Dotz rendering tests (~200ms) due to hightea renderer. The `dotz-streaming` test uses real `hightea` render with suppressed stdout (~300ms).
 
 ## See Also
 

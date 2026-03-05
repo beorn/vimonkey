@@ -1,8 +1,8 @@
 /**
- * DotzReporter - inkx-based Vitest Reporter
+ * DotzReporter - hightea-based Vitest Reporter
  *
- * Renders test results using inkx React components.
- * All output goes through inkx - layout, colors, everything.
+ * Renders test results using hightea React components.
+ * All output goes through hightea - layout, colors, everything.
  * Zero manual ANSI. Every color, alignment, spacing is a component prop or flex layout.
  */
 
