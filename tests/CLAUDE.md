@@ -48,11 +48,11 @@ expect(app.text).toContain("passed")
 ## Ad-Hoc Testing
 
 ```bash
-bun vitest run vendor/beorn-vitestx/tests/              # All vitestx tests
-bun vitest run vendor/beorn-vitestx/tests/fuzz.fuzz.ts  # Fuzz API tests
-bun vitest run vendor/beorn-vitestx/tests/chaos.test.ts # Chaos transformers
-bun vitest run vendor/beorn-vitestx/tests/random.test.ts # Seeded RNG
-bun vitest run vendor/beorn-vitestx/tests/dotz.test.tsx  # Dotz reporter
+bun vitest run vendor/vitestx/tests/              # All vitestx tests
+bun vitest run vendor/vitestx/tests/fuzz.fuzz.ts  # Fuzz API tests
+bun vitest run vendor/vitestx/tests/chaos.test.ts # Chaos transformers
+bun vitest run vendor/vitestx/tests/random.test.ts # Seeded RNG
+bun vitest run vendor/vitestx/tests/dotz.test.tsx  # Dotz reporter
 ```
 
 ## Efficiency

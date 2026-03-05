@@ -4,7 +4,7 @@ Vitest extensions: fuzz testing (gen/take generators, test.fuzz() with auto-shri
 
 ## Commands
 
-bun test vendor/beorn-vitestx/ # run tests
+bun test vendor/vitestx/ # run tests
 
 ## Architecture
 
