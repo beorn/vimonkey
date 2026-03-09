@@ -11,9 +11,13 @@
   ],
   "license": "MIT",
   "author": "Beorn",
+  "homepage": "https://beorn.github.io/vitestx/",
+  "bugs": {
+    "url": "https://github.com/beorn/vitestx/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/beorn/vitestx"
+    "url": "https://github.com/beorn/vitestx.git"
   },
   "files": [
     "dist",

@@ -1,2 +1,10 @@
 node_modules/
 __fuzz_cases__/
+dist/
+.DS_Store
+coverage/
+*.log
+*.tgz
+bun.lockb
+docs/.vitepress/dist/
+docs/.vitepress/cache/
