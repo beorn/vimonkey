@@ -17,6 +17,9 @@ jobs:
         with:
           bun-version: latest
       - run: bun install
+      # Pre-publish gate: suite must be green before build/publish. Uses
+      # test:run (vitest run) — bare `test` is watch mode and would hang CI.
+      - run: bun run test:run
       - run: bun run build
       - uses: pnpm/action-setup@v4
         with:
