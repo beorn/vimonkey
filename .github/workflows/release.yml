@@ -1,3 +1,4 @@
+# vendor-kit: release@ea58d1c2813a — generated; edit packages/km-infra/vendor-kit/templates/release.yml in km, then re-sync
 name: Release
 
 on:
@@ -17,8 +18,6 @@ jobs:
         with:
           bun-version: latest
       - run: bun install
-      # Pre-publish gate: suite must be green before build/publish. Uses
-      # test:run (vitest run) — bare `test` is watch mode and would hang CI.
       - run: bun run test:run
       - run: bun run build
       - uses: pnpm/action-setup@v4
@@ -40,7 +39,8 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
       - if: steps.check.outputs.skip != 'true'
-        # pnpm publish (not npm publish) — pnpm applies publishConfig.exports overrides
+        # pnpm publish (NOT npm publish) — npm doesn't apply publishConfig.exports
+        # overrides; pnpm does.
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
