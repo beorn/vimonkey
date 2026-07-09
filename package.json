@@ -50,8 +50,8 @@
   "scripts": {
     "build": "tsdown",
     "prepack": "tsdown",
-    "test": "vitest",
-    "test:run": "vitest run"
+    "test": "bun node_modules/.bin/vitest",
+    "test:run": "bun node_modules/.bin/vitest run"
   },
   "dependencies": {
     "debug": "^4.4.0"
@@ -60,7 +60,7 @@
     "@types/node": "^22.0.0",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.0"
+    "vitest": "^4.1.10"
   },
   "peerDependencies": {
     "vitest": ">=4.0.0"
