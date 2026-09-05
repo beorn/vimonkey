@@ -54,19 +54,25 @@ jobs:
               return 0
             fi
 
-            # Install declared peerDependencies alongside the tarball. A real
-            # consumer of a package with peers already has them installed;
-            # relying on npm to auto-satisfy an unmet peer here hits a known
-            # arborist crash ("Cannot read properties of null (reading
-            # 'edgesOut')", npm/cli#8261, npm/cli#9787) on npm 10.9.2 (Node
-            # 23.11.1, this workflow's toolchain).
+            # Install declared peerDependencies alongside the tarball, the way
+            # a real consumer of a peer-having package already would — an
+            # unmet peer left for npm to auto-satisfy hits a known, unfixed
+            # npm arborist crash ("Cannot read properties of null (reading
+            # 'edgesOut')", npm/cli#8261, npm/cli#9787) while it recurses
+            # through vitest's own nested optional-peer graph.
+            #
+            # --legacy-peer-deps is also required, not optional: that same
+            # recursive optional-peer walk (vitest -> @vitest/ui -> vitest,
+            # etc.) crashes arborist even when the peer is supplied explicitly
+            # and even when its version is pinned to an exact, single value —
+            # only disabling npm's modern peer-resolution engine avoids it.
             local peer_args=()
             while IFS= read -r spec; do
               [ -n "$spec" ] && peer_args+=("$spec")
             done < <(node -e "const p=require('./$dir/package.json'); const peers=p.peerDependencies||{}; for (const [n,r] of Object.entries(peers)) console.log(n+'@'+r)")
 
             local tmpdir=$(mktemp -d)
-            (cd "$tmpdir" && npm init -y --quiet 2>/dev/null && npm install "$GITHUB_WORKSPACE/$tgz" "${peer_args[@]}" --no-save 2>&1) || {
+            (cd "$tmpdir" && npm init -y --quiet 2>/dev/null && npm install "$GITHUB_WORKSPACE/$tgz" "${peer_args[@]}" --no-save --legacy-peer-deps 2>&1) || {
               echo "❌ npm install failed for $name"
               rm -rf "$tmpdir" "$tgz"
               exit 1
