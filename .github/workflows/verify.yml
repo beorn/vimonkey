@@ -54,8 +54,19 @@ jobs:
               return 0
             fi
 
+            # Install declared peerDependencies alongside the tarball. A real
+            # consumer of a package with peers already has them installed;
+            # relying on npm to auto-satisfy an unmet peer here hits a known
+            # arborist crash ("Cannot read properties of null (reading
+            # 'edgesOut')", npm/cli#8261, npm/cli#9787) on npm 10.9.2 (Node
+            # 23.11.1, this workflow's toolchain).
+            local peer_args=()
+            while IFS= read -r spec; do
+              [ -n "$spec" ] && peer_args+=("$spec")
+            done < <(node -e "const p=require('./$dir/package.json'); const peers=p.peerDependencies||{}; for (const [n,r] of Object.entries(peers)) console.log(n+'@'+r)")
+
             local tmpdir=$(mktemp -d)
-            (cd "$tmpdir" && npm init -y --quiet 2>/dev/null && npm install "$GITHUB_WORKSPACE/$tgz" --no-save 2>&1) || {
+            (cd "$tmpdir" && npm init -y --quiet 2>/dev/null && npm install "$GITHUB_WORKSPACE/$tgz" "${peer_args[@]}" --no-save 2>&1) || {
               echo "❌ npm install failed for $name"
               rm -rf "$tmpdir" "$tgz"
               exit 1
