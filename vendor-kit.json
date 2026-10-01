@@ -1,5 +1,5 @@
 {
-  "modules": ["release"],
+  "modules": ["release", "verify"],
   "vars": {
     "testCommand": "bun run test:run",
     "bunVersion": "latest"
